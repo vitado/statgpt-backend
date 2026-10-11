@@ -1,11 +1,11 @@
-name: Scheduled security scan
+name: Scheduled Workflow
 
 # Pilot caller on the fork: manual runs only, the schedule is added when rolled out upstream.
 on:
   workflow_dispatch: {}
 
 concurrency:
-  group: trivy-scheduled
+  group: sca-scheduled
   cancel-in-progress: false
 
 permissions:
@@ -13,10 +13,10 @@ permissions:
   packages: read
 
 jobs:
-  scan:
-    uses: vitado/ai-dial-ci/.github/workflows/trivy_scheduled.yml@pilot/trivy-scheduled
+  sca:
+    uses: vitado/ai-dial-ci/.github/workflows/sca_scheduled.yml@pilot/sca-scheduled
     with:
-      upstream-repository: epam/statgpt-backend
+      repository: epam/statgpt-backend
       images: |
         epam/statgpt-chat-backend
         epam/statgpt-admin-backend
