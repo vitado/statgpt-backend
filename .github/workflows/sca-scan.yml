@@ -1,11 +1,11 @@
-name: Scheduled Workflow
+name: SCA Scan
 
 # Pilot caller on the fork: manual runs only, the schedule is added when rolled out upstream.
 on:
   workflow_dispatch: {}
 
 concurrency:
-  group: sca-scheduled
+  group: sca-scan
   cancel-in-progress: false
 
 permissions:
