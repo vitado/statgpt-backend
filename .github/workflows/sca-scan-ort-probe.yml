@@ -1,0 +1,23 @@
+name: SCA Scan (ORT probe)
+
+# ORT probe caller on the fork (see sca-scan.yml): manual runs only, removed after the probe.
+on:
+  workflow_dispatch: {}
+
+concurrency:
+  group: sca-scan-ort-probe
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  sca:
+    uses: vitado/ai-dial-ci/.github/workflows/sca_scheduled.yml@pilot/sca-ort-probe
+    with:
+      ort-enabled: true
+      repository: epam/statgpt-backend
+      images: |
+        epam/statgpt-chat-backend
+        epam/statgpt-admin-backend
